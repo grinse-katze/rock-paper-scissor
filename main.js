@@ -1,5 +1,9 @@
 const availableElements = ['rock', 'paper', 'scissor'];
 
+
+let computerSelection;
+let playerSelection;
+
 function computerPlay(){
     //randomly return Rock, Paper or Scissor
     const randomElement = Math.floor(Math.random() * availableElements.length);
@@ -8,21 +12,42 @@ function computerPlay(){
 
 
 function playRound(playerSelection, computerSelection){
-    //check if user inout is in the availableElements array
-    if (playerSelection == availableElements[0] || playerSelection == availableElements[1] || playerSelection == availableElements[2]) {
+    playerSelection = playerSelection.toLowerCase();
+    //check if user input is in the availableElements array
+    if (playerSelection == availableElements[0] || 
+        playerSelection == availableElements[1] || 
+        playerSelection == availableElements[2]) {
+        
         if (playerSelection == computerSelection){
-            console.log("It's a tie!");
-        } else if (playerSelection > computerSelection){
-            console.log("You win!");
-        } else{
-            console.log("You lose!");
+            alert(`${playerSelection} ties with ${computerSelection}`);
+        } else if (playerSelection == availableElements[0] && computerSelection == availableElements[2]){
+            //if user chooses rock against scissor = user wins
+            alert(`${playerSelection} wins against ${computerSelection}`);
+        } else if (playerSelection == availableElements[2] && computerSelection == availableElements[1]){
+            //if user chooses scissor against paper = user wins
+            alert(`${playerSelection} wins against ${computerSelection}`);
+        } else if (playerSelection == availableElements[1] && computerSelection == availableElements[0]){
+            //if user chooses paper against rock = user wins
+            alert(`${playerSelection} wins against ${computerSelection}`);
         }
+        else{
+            alert(`${playerSelection} loses against ${computerSelection}`);
+        }
+
     } else{
-        console.log("Please choose one of the following: rock, paper, scissor");
+        alert("Please choose one of the following: rock, paper, scissor");
     }
 }
 
-const computerSelection = computerPlay();
-const playerSelection = "rock";
-console.log(playRound(playerSelection, computerSelection));
+function game(){
+    for(let i = 0; i < 5; i++) {
+        playerSelection = prompt("Choose one of the following: rock, paper, scissor");
+        computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
+
+game();
+
+
 
