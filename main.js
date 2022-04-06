@@ -1,44 +1,56 @@
-const choices = ['rock', 'paper', 'scissor'];
+const buttons = document.querySelectorAll('button');
+const pScore = document.querySelector('#player-score');
+const cScore = document.querySelector('#computer-score');
 
 let playerScore = 0;
 let computerScore = 0;
 
+
+//document.querySelector('#status').textContent = "";
+
+
+
 function computerPlay(){
+    const choices = ['rock', 'paper', 'scissor'];
     //randomly return Rock, Paper or Scissor
-    const randomElement = Math.floor(Math.random() * choices.length);
-    return choices[randomElement];
+    return choices[Math.floor(Math.random() * choices.length)];
 }
 
 
-function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toLowerCase();
+buttons.forEach(button => {
+    button.addEventListener('click', function() {
+        playRound(button.id);
+    })
+})
 
-    //check if user input is in the choices array
-    if (playerSelection == choices[0] || 
-        playerSelection == choices[1] || 
-        playerSelection == choices[2]) {
-        
-        if (playerSelection == computerSelection){
-            alert(`${playerSelection} ties with ${computerSelection}`);
-        } else if (
-            (playerSelection == choices[0] && computerSelection == choices[2]) ||
-            (playerSelection == choices[2] && computerSelection == choices[1]) ||
-            (playerSelection == choices[1] && computerSelection == choices[0])
-            ){
-            alert(`${playerSelection} wins against ${computerSelection}`);
-            playerScore += 1;
-        } else{
-            alert(`${playerSelection} loses against ${computerSelection}`);
-            computerScore += 1;
-        }
-        alert(`Current score: 
-                You: ${playerScore}
-                Computer: ${computerScore}`);
 
+
+function playRound(playerSelection, computerSelection){      
+    computerSelection = computerPlay();
+    let status = '';  
+    if (playerSelection == computerSelection){
+        status = `${playerSelection} ties with ${computerSelection}`;
+    } else if (
+        (playerSelection == 'rock' && computerSelection == 'scissor') ||
+        (playerSelection == 'scissor' && computerSelection == 'paper') ||
+        (playerSelection == 'paper' && computerSelection == 'rock')
+        ){
+        status = `${playerSelection} wins against ${computerSelection}`;
+        playerScore += 1;
     } else{
-        alert("Please choose one of the following: rock, paper, scissor");
+        status = `${playerSelection} loses against ${computerSelection}`;
+        computerScore += 1;
     }
+    // Update Status & Score text in document
+    document.querySelector('#status').textContent = status;
+    document.querySelector('#player-score').textContent = playerScore;
+    document.querySelector('#computer-score').textContent = computerScore;
 }
+
+
+
+/*
+
 
 function game(){
     for(let i = 0; i < 5; i++) {
@@ -52,6 +64,8 @@ function game(){
 }
 
 game();
+
+*/
 
 
 
