@@ -1,4 +1,7 @@
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.choice-button');
+const gameOverScreen = document.querySelector('.game-over');
+const overlay = document.querySelector('#overlay');
+const newGameButton = document.querySelector('#new-game-button');
 
 let playerScore = 0;
 let computerScore = 0;
@@ -34,23 +37,24 @@ function playRound(playerSelection, computerSelection){
     } 
 
     else {
+        gameOverScreen.classList.add('active');
+        overlay.classList.add('active');
         gameOver();
     }
 }
 
 function gameOver(){
     if (playerScore === 5) {
-        document.querySelector('#status').textContent = "You win!";
+        document.querySelector('#game-result').textContent = "You win!";
     } else {
-        document.querySelector('#status').textContent = "You lose!";
+        document.querySelector('#game-result').textContent = "You lose!";
     }
-}
+    newGameButton.addEventListener('click', function(){
+        window.location.reload();
+    });
 
-/*
-function game(userInput){
-    playRound(userInput, computerPlay())
 }
-*/
+ 
 
 buttons.forEach(button => {
     button.addEventListener('click', function() {

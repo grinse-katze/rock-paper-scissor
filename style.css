@@ -53,3 +53,49 @@ button:hover {
     padding-top: 5px;
     text-align: center;
 }
+
+.game-over {
+    background-color: rgb(212, 212, 212);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    /*transition: 200ms ease-in-out;*/
+    border: 3px solid rgb(207, 146, 55);
+    border-radius: 10px;
+    z-index: 10;
+    width: 500px;
+    max-width: 80%;
+    text-align: center;
+}
+
+.game-over.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#game-result {
+    padding: 20px;
+}
+
+#new-game-button {
+    cursor: pointer;
+    font-size: 900;
+    margin-bottom: 20px;
+}
+
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
