@@ -1,2 +1,4 @@
 # rock-paper-scissor
-A simple Rock Paper Scissor Game in js
+Rock Paper Scissor Game in Javascript
+
+[Live Demo](https://grinse-katze.github.io/rock-paper-scissor/)
