@@ -12,10 +12,26 @@ function computerPlay(){
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
+buttons.forEach(button => {
+    button.addEventListener('mouseover', function() {
+        // highlight the mouseover target
+        button.classList.add('active');
+    });
+});
+
+buttons.forEach(button => {
+    button.addEventListener('mouseout', function() {
+        // remove highlight
+        button.classList.remove('active');
+    });
+});
+
+
+
+
 function playRound(playerSelection, computerSelection){      
     let status = '';
 
-    if (playerScore < 5 && computerScore < 5){
         if (playerSelection == computerSelection){
             status = `${playerSelection} ties with ${computerSelection}`;
         } else if (
@@ -34,9 +50,9 @@ function playRound(playerSelection, computerSelection){
         document.querySelector('#status').textContent = status;
         document.querySelector('#player-score').textContent = playerScore;
         document.querySelector('#computer-score').textContent = computerScore;
-    } 
+     
 
-    else {
+    if (playerScore == 5 || computerScore == 5){
         gameOverScreen.classList.add('active');
         overlay.classList.add('active');
         gameOver();
