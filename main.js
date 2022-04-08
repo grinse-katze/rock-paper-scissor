@@ -12,23 +12,6 @@ function computerPlay(){
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
-buttons.forEach(button => {
-    button.addEventListener('mouseover', function() {
-        // highlight the mouseover target
-        button.classList.add('active');
-    });
-});
-
-buttons.forEach(button => {
-    button.addEventListener('mouseout', function() {
-        // remove highlight
-        button.classList.remove('active');
-    });
-});
-
-
-
-
 function playRound(playerSelection, computerSelection){      
     let status = '';
 
@@ -78,7 +61,19 @@ buttons.forEach(button => {
     });
 });
 
+buttons.forEach(button => {
+    button.addEventListener('mouseover', function() {
+        // highlight the mouseover target
+        button.classList.add('active');
+    });
+});
 
+buttons.forEach(button => {
+    button.addEventListener('mouseout', function() {
+        // remove highlight
+        button.classList.remove('active');
+    });
+});
 
 
 
