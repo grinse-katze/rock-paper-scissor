@@ -48,6 +48,7 @@ function gameOver(){
     } else {
         document.querySelector('#game-result').textContent = "You lose!";
     }
+    document.querySelector('#game-result-score').textContent = `${playerScore} - ${computerScore}`;
     newGameButton.addEventListener('click', function(){
         window.location.reload();
     });
